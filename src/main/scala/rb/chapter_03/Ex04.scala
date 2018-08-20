@@ -7,8 +7,11 @@ object Ex04 {
 
   @tailrec
   def drop[A](l: List[A], n: Int): List[A] = {
-    if (n == 0) l
-    else drop(tail(l), n - 1)
+    l match {
+      case Nil => l
+      case _ if n <= 0 => l
+      case _ => drop(tail(l), n - 1)
+    }
   }
 
 
