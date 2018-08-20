@@ -2,20 +2,24 @@ package rb.chapter_03
 
 import org.scalacheck.Prop.forAll
 import org.scalacheck.{Gen, Properties}
-
-import scala.{List => sList, Nil => sNil}
-import ListConversions.convert
+import rb.chapter_03.ListConversions.convert
 
 import scala.util.{Failure, Success, Try}
+import scala.{List => sList}
 
-object Ex02Spec extends Properties("03.02") {
+object Ex03Spec extends Properties("03.03") {
 
-  import Ex02.tail
+  import Ex03.setHead
   val list = Gen.containerOf[sList, Int](Gen.chooseNum(Int.MinValue, Int.MaxValue))
+  val head = Gen.chooseNum(Int.MinValue, Int.MaxValue)
+  val tup = for {
+    l <- list
+    h <- head
+  } yield (h, l)
 
-  property("tail") =  forAll(list) { l: sList[Int] =>
-    val real = Try(l.tail)
-    val ex = Try(convert(tail(List(l : _*))))
+  property("setHead") =  forAll(tup) { case (h: Int, l: sList[Int]) =>
+    val real = Try(h :: l.tail)
+    val ex = Try(convert(setHead(List(l : _*), h)))
     (real, ex) match {
       case (Success(r), Success(e)) => r == e
       case (Failure(r), Failure(e)) =>
