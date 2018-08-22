@@ -7,7 +7,7 @@ import rb.chapter_03.ListConversions.convert
 import scala.util.{Failure, Success, Try}
 import scala.{List => sList}
 
-object Ex04Spec extends Properties("03.03") {
+object Ex04Spec extends Properties("03.04") {
 
   import Ex04.drop
 
