@@ -19,7 +19,7 @@ object Ex05Spec extends Properties("03.05") {
     p <- genf
   } yield (p, l)
 
-  property("drop") = forAll(tup) { case (p: (Int => Boolean), l: sList[Int]) =>
+  property("dropWhile") = forAll(tup) { case (p: (Int => Boolean), l: sList[Int]) =>
     val real = Try(l.dropWhile(p))
     val ex = Try(convert(dropWhile(List(l : _*), p)))
     (real, ex) match {
