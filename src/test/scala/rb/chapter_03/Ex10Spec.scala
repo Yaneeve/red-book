@@ -6,7 +6,7 @@ import org.scalacheck.{Arbitrary, Gen, Properties}
 import scala.util.{Success, Try}
 import scala.{List => sList}
 
-object Ex010Spec extends Properties("03.10") {
+object Ex10Spec extends Properties("03.10") {
 
   import Ex10.foldLeft
 

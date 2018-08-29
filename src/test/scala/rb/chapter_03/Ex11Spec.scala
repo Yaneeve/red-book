@@ -6,7 +6,7 @@ import org.scalacheck.{Gen, Properties}
 import scala.util.{Success, Try}
 import scala.{List => sList}
 
-object Ex11Spec extends Properties("03.09") {
+object Ex11Spec extends Properties("03.11") {
 
   import Ex11.{sum, product, length}
 
