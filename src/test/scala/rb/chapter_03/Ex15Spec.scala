@@ -7,7 +7,7 @@ import rb.chapter_03.ListConversions.convert
 import scala.util.{Success, Try}
 import scala.{List => sList}
 
-object Ex15Spec extends Properties("03.14") {
+object Ex15Spec extends Properties("03.15") {
 
   import Ex15.flatten
 
@@ -17,7 +17,7 @@ object Ex15Spec extends Properties("03.14") {
     lola <- Gen.listOf(xs)
   } yield lola
 
-  property("append") = forAll(lola) { slola: sList[sList[Int]] =>
+  property("flatten") = forAll(lola) { slola: sList[sList[Int]] =>
     val real: Try[sList[Int]] = Try(slola.flatten)
     val lola: List[List[Int]] =  List(slola.map(List(_ : _*)) : _ *)
     val flat: List[Int] = flatten(lola)
