@@ -13,7 +13,7 @@ object Ex17Spec extends Properties("03.17") {
 
   private val list = Gen.containerOf[sList, Double](Gen.chooseNum(Double.MinValue, Double.MaxValue))
 
-  property("toString") = forAll(list) { l: sList[Double] =>
+  property("mapToString") = forAll(list) { l: sList[Double] =>
     val real = Try(l.map(_.toString))
     val ex = Try(convert(mapToString(List(l : _*))))
     (real, ex) match {
