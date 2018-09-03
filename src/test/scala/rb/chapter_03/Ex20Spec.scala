@@ -20,8 +20,8 @@ object Ex20Spec extends Properties("03.20") {
 
   property("map") = forAll(tup) { case (l: sList[Double], f: (Double => sList[String])) =>
     val real = Try(l.flatMap(f))
-    val t = {sl: sList[String] => List(sl : _*)}
-    val ex = Try(convert(flatMap(List(l : _*))(f)))
+    val t: Double => List[String] = {d => List(f(d) : _ *)}
+    val ex = Try(convert(flatMap(List(l : _*))(t)))
     (real, ex) match {
       case (Success(r), Success(e)) => r == e
       case _ => false
