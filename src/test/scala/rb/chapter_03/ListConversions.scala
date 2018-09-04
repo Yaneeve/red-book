@@ -16,4 +16,6 @@ object ListConversions {
     split(l, sNil)._2
   }
 
+  implicit def convertFunction[A, B](f : A => sList[B]): A => List[B] = { a :A => List(f(a): _ * ) }
+
 }

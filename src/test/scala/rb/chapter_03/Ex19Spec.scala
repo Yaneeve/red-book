@@ -19,7 +19,7 @@ object Ex19Spec extends Properties("03.19") {
 
   property("filter") = forAll(tup) { case (l: sList[Double], f: (Double => Boolean)) =>
     val real = Try(l.filter(f))
-    val ex = Try(convert(filter(List(l : _*))( f)))
+    val ex = Try(convert(filter(List(l : _*))(f)))
     (real, ex) match {
       case (Success(r), Success(e)) => r == e
       case _ => false
