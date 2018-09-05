@@ -10,7 +10,6 @@ import scala.{List => sList}
 object Ex20Spec extends Properties("03.20") {
 
   import Ex20.flatMap
-  import Ex18.map
 
   private val tup =
     for {
