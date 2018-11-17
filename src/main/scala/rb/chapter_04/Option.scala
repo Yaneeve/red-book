@@ -3,9 +3,9 @@ package rb.chapter_04
 sealed trait Option[+A] {
   def map[B](f: A => B): Option[B] = Ex01.map(this)(f)
 
-  def getOrElse[B>:A](default: => B): B = ???
+  def getOrElse[B>:A](default: => B): B = Ex01.getOrElse(this : Option[B])(default)
 
-  def flatMap[B](f: A => Option[B]): Option[B] = ???
+  def flatMap[B](f: A => Option[B]): Option[B] = Ex01.flatMap(this)(f)
 
   def orElse[B>:A](ob: => Option[B]): Option[B] = ???
 

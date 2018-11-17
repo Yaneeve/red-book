@@ -13,4 +13,6 @@ object Ex01 {
     case Some(a) => a
   }
 
+  def flatMap[A, B](o: Option[A])(f: A => Option[B]): Option[B] = map(o)(f).getOrElse(None)
+
 }
