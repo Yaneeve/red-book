@@ -9,7 +9,7 @@ sealed trait Option[+A] {
 
   def orElse[B>:A](ob: => Option[B]): Option[B] = ???
 
-  def filter(f: A => Boolean): Option[A] = ???
+  def filter(f: A => Boolean): Option[A] = Ex01.filter(this)(f)
 }
 case class Some[+A](get: A) extends Option[A]
 case object None extends Option[Nothing]
