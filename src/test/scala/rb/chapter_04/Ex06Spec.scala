@@ -31,10 +31,10 @@ object Ex06Spec extends Properties("04.06") {
   } yield (gopt1, gopt2)
 
   private val genForMap2 = for {
-    gopt1 <- geneith
-    gopt2 <- geneith
-    gf <- genf
-  } yield (gopt1, gopt2, gf)
+    geith1 <- geneith
+    geith2 <- geneith
+    gf <-  Arbitrary.arbitrary[(Int, Int) => String]
+  } yield (geith1, geith2, gf)
 
   property("either map") =  forAll(generators) { case (eith: sEither[String, Int], f: (Int => String)) =>
     val real = Try(eith.map(f))
