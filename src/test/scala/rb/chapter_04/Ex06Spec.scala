@@ -21,14 +21,14 @@ object Ex06Spec extends Properties("04.06") {
   private val genf: Gen[Int => String] = Arbitrary.arbitrary[Int => String]
 
   private val generators = for {
-    gopt <- geneith
+    geith <- geneith
     gf <- genf
-  } yield (gopt, gf)
+  } yield (geith, gf)
 
   private val genForOrElse = for {
-    gopt1 <- geneith
-    gopt2 <- geneith
-  } yield (gopt1, gopt2)
+    geith1 <- geneith
+    geith2 <- geneith
+  } yield (geith1, geith2)
 
   private val genForMap2 = for {
     geith1 <- geneith

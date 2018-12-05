@@ -22,7 +22,7 @@ object Ex05Spec extends Properties("04.05") {
     gf <- genf
   } yield (gl, gf)
 
-  property("sequence") = forAll(genList) { los: List[sOption[Int]] =>
+  property("option sequence") = forAll(genList) { los: List[sOption[Int]] =>
     val real: Try[sOption[List[Int]]] = Try(los.sequence)
     val ex: Try[Option[List[Int]]] = Try(sequence(los.map(convert(_))))
     (real, ex) match {
@@ -31,7 +31,7 @@ object Ex05Spec extends Properties("04.05") {
     }
   }
 
-  property("traverse") = forAll(genForTraverse) { case (lis: List[Int], func: (Int => sOption[String]))=>
+  property("option traverse") = forAll(genForTraverse) { case (lis: List[Int], func: (Int => sOption[String]))=>
     val exFunc: Int => Option[String] = (OptionConversions.convert (_ : sOption[String])).compose(func)
     val real: Try[sOption[List[String]]] = Try(lis.traverse[sOption, String](func))
     val ex: Try[Option[List[String]]] = Try(traverse(lis)(exFunc))
