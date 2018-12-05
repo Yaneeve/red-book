@@ -50,7 +50,7 @@ object Ex01Spec extends Properties("04.01") {
     }
   }
 
-  property("getOrElse") = forAll(genForGetters) { case (o: sOption[Int], i: Int) =>
+  property("option getOrElse") = forAll(genForGetters) { case (o: sOption[Int], i: Int) =>
     val real = Try(o.getOrElse(i))
     val ex = Try(getOrElse(convert(o))(i))
     (real, ex) match {
@@ -59,7 +59,7 @@ object Ex01Spec extends Properties("04.01") {
     }
   }
 
-  property("orElse") = forAll(genForOrElse) { case (o1: sOption[Int], o2: sOption[Int]) =>
+  property("option orElse") = forAll(genForOrElse) { case (o1: sOption[Int], o2: sOption[Int]) =>
     val real: Try[sOption[Int]] = Try(o1.orElse(o2))
     val ex: Try[Option[Int]] = Try(orElse(convert(o1))(convert(o2)))
     (real, ex) match {

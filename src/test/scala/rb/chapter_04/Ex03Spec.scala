@@ -23,7 +23,7 @@ object Ex03Spec extends Properties("04.03") {
     gf <- genf
   } yield (gopt1, gopt2, gf)
 
-  property("map2") =  forAll(generators) { case (o1: sOption[Int], o2: sOption[Int], f: ((Int, Int) => String)) =>
+  property("option map2") =  forAll(generators) { case (o1: sOption[Int], o2: sOption[Int], f: ((Int, Int) => String)) =>
 
     val real = Try(Applicative[sOption].map2(o1, o2)(f))
     val ex = Try(map2(convert(o1), convert(o2))(f))
